@@ -9,7 +9,14 @@ To implement  T flipflop using verilog and validating their functionality using 
 Quartus prime
 
 **THEORY**
-
+A T flip-flop (Toggle flip-flop) is a sequential logic circuit used for toggling its output state. It has a single input (T) and a clock signal (CLK). When 
+T=1, the output 
+𝑄
+Q toggles (flips) its state on each clock edge. When 
+𝑇
+=
+0
+T=0, the output remains unchanged. Its main uses are in counters, frequency dividers, and toggling circuits.
 **T Flip-Flop**
 
 T flip-flop is the simplified version of JK flip-flop. It is obtained by connecting the same input ‘T’ to both inputs of JK flip-flop. It operates with only positive clock transitions or negative clock transitions. The circuit diagram of T flip-flop is shown in the following figure.
@@ -32,11 +39,29 @@ From the above characteristic table, we can directly write the next state equati
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:24001722
 */
+module t_ff_ (t, clk, rst, q);
+  input t, clk, rst;
+  output reg q;
+
+  always @(posedge clk or posedge rst) 
+begin
+    if (rst)
+      q <= 0; // Reset the flip-flop
+    else if (t==0)
+      q <= q; 
+     else
+        q<=~q;
+  end
+endmodule
+
 
 **RTL LOGIC FOR FLIPFLOPS**
+![image](https://github.com/user-attachments/assets/ee9de381-10ed-482a-8915-684cc41c8e3f)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+![image](https://github.com/user-attachments/assets/74901612-5aa5-4956-8820-ee5a0f96db4f)
 
 **RESULTS**
+The implemention of  T flipflop using verilog and validating their functionality using their functional tables are proved
